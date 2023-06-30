@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from main.models import Marks
+from main.models import Marks, Event
 from djoser.serializers import UserCreateSerializer
 
 User = get_user_model()
@@ -21,4 +21,10 @@ class UserSerializer(UserCreateSerializer):
 class MarksSerializer(serializers.ModelSerializer):
     class Meta:
         model = Marks
+        fields = "__all__"
+
+
+class EventsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
         fields = "__all__"

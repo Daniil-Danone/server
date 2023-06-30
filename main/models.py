@@ -29,3 +29,18 @@ class Marks(models.Model):
 
     def __str__(self):
         return f'{self.id} ~ {self.title} | {self.description} | X: {self.xpos} - Y: {self.ypos}'
+
+
+class Event(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    type = models.CharField(max_length=255)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField()
+    address = models.CharField(max_length=255)
+    xpos = models.FloatField()
+    ypos = models.FloatField()
+    is_Active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.id} ~ {self.type} | {self.title} | {self.description} | {self.author.name}'

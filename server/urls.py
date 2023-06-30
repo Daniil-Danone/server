@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
 
-from main.views import MarksAPIView
+from main.views import MarksAPIView, EventsAPIView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -10,4 +10,6 @@ urlpatterns = [
 
     path("api/v1/mark", MarksAPIView.as_view()),
     path("api/v1/mark/<int:pk>", MarksAPIView.as_view()),
+    path("api/v1/event", EventsAPIView.as_view()),
+    path("api/v1/event/<int:pk>", EventsAPIView.as_view()),
 ]
