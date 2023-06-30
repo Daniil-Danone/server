@@ -75,6 +75,7 @@ class EventsAPIView(views.APIView):
             return Response(f"Не существует маркера с ID: {pk}")
 
     def post(self, request):
+        print(request)
         serializer = EventsSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()

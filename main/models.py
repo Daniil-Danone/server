@@ -34,12 +34,12 @@ class Marks(models.Model):
 class Event(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    type = models.CharField(max_length=255)
+    type = models.CharField(max_length=255, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateTimeField()
-    address = models.CharField(max_length=255)
-    xpos = models.FloatField()
-    ypos = models.FloatField()
+    date = models.CharField(max_length=255, blank=True)
+    address = models.CharField(max_length=255, blank=True)
+    xpos = models.FloatField(blank=True, null=True)
+    ypos = models.FloatField(blank=True, null=True)
     is_Active = models.BooleanField(default=True)
 
     def __str__(self):
