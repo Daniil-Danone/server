@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from main.models import Todo
+from main.models import Marks
 from djoser.serializers import UserCreateSerializer
 
 User = get_user_model()
@@ -18,7 +18,7 @@ class UserSerializer(UserCreateSerializer):
         pass
 
 
-class TodoSerializer(serializers.ModelSerializer):
+class MarksSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Todo
+        model = Marks
         fields = "__all__"

@@ -21,10 +21,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         return f'UserID {self.id}: {self.name} {self.surname} | {self.email}'
 
 
-class Todo(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField(blank=True, null=True)
-    is_Done = models.BooleanField(default=0)
+class Marks(models.Model):
+    title = models.CharField(max_length=255, blank=True)
+    description = models.TextField(blank=True)
+    xpos = models.FloatField()
+    ypos = models.FloatField()
 
     def __str__(self):
-        return f'{self.id} | {self.title}: {self.description} | {self.is_Done}'
+        return f'{self.id} ~ {self.title} | {self.description} | X: {self.xpos} - Y: {self.ypos}'

@@ -2,27 +2,27 @@ from rest_framework import views
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 
-from main.models import Todo
-from main.serializers import TodoSerializer
+from main.models import Marks
+from main.serializers import MarksSerializer
 
 
-class TodoAPIView(views.APIView):
+class MarksAPIView(views.APIView):
     permission_classes = [AllowAny]
 
     def get(self, request, *args, **kwargs):
         pk = kwargs.get("pk", None)
 
         if not pk:
-            return Response(TodoSerializer(Todo.objects.all(), many=True).data)
+            return Response(MarksSerializer(Marks.objects.all(), many=True).data)
 
         try:
-            return Response(TodoSerializer(Todo.objects.filter(id=pk), many=True).data)
+            return Response(MarksSerializer(Marks.objects.filter(id=pk), many=True).data)
 
         except:
-            return Response(f"Не существует записи с ID: {pk}")
+            return Response(f"Не существует маркера с ID: {pk}")
 
     def post(self, request):
-        serializer = TodoSerializer(data=request.data)
+        serializer = MarksSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
