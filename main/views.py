@@ -26,9 +26,10 @@ class MarksAPIView(views.APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response(f'Новая запись добавлена')
+        return Response(serializer.data)
 
     def put(self, request, *args, **kwargs):
+        print(request.data)
         pk = kwargs.get("pk", None)
 
         if not pk:
@@ -80,7 +81,7 @@ class EventsAPIView(views.APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response(f'Новая запись добавлена')
+        return Response(serializer.data)
 
     def put(self, request, *args, **kwargs):
         pk = kwargs.get("pk", None)

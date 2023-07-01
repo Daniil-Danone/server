@@ -24,6 +24,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Marks(models.Model):
     title = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
     xpos = models.FloatField()
     ypos = models.FloatField()
 
