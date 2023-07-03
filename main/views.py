@@ -29,7 +29,6 @@ class MarksAPIView(views.APIView):
         return Response(serializer.data)
 
     def put(self, request, *args, **kwargs):
-        print(request.data)
         pk = kwargs.get("pk", None)
 
         if not pk:

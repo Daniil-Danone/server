@@ -32,6 +32,7 @@ class MarksSerializer(serializers.ModelSerializer):
         instance.author = validated_data.get("author", instance.author)
         instance.xpos = validated_data.get("xpos", instance.xpos)
         instance.ypos = validated_data.get("ypos", instance.ypos)
+        instance.type = validated_data.get("type", instance.type)
         instance.save()
 
         return instance
