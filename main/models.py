@@ -39,6 +39,7 @@ class Event(models.Model):
     type = models.CharField(max_length=255, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.CharField(max_length=255, blank=True)
+    time = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
     xpos = models.FloatField(blank=True, null=True)
     ypos = models.FloatField(blank=True, null=True)
