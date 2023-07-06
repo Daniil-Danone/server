@@ -7,6 +7,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     name = models.CharField(max_length=100, blank=True, null=True)
     surname = models.CharField(max_length=100, blank=True, null=True)
+    togo_events = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     is_superuser = models.BooleanField(blank=True, default=False)
     is_staff = models.BooleanField(blank=True, default=False)
@@ -15,7 +16,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ("name", "surname")
+    REQUIRED_FIELDS = ("name", "surname", "togo_events", "created_at")
 
     def __str__(self):
         return f'UserID {self.id}: {self.name} {self.surname} | {self.email}'
