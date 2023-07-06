@@ -1,5 +1,13 @@
 from rest_framework import serializers
-from main.models import Marks, Event
+from main.models import Marks, Event, User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'email', 'id', 'name', 'surname'
+        ]
 
 
 class MarksSerializer(serializers.ModelSerializer):

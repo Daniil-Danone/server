@@ -2,8 +2,27 @@ from rest_framework import views
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 
-from main.models import Marks, Event
-from main.serializers import MarksSerializer, EventsSerializer
+from main.models import Marks, Event, User
+from main.serializers import MarksSerializer, EventsSerializer, UserSerializer
+
+
+class UserAPIView(views.APIView):
+    permission_classes = [AllowAny]
+
+    #  Получение объекта пользователя или массива объектов пользователей
+    def get(self, request, *args, **kwargs):
+        pk = kwargs.get("pk", None)
+
+        #  Получение всех пользователей
+        if not pk:
+            return Response(UserSerializer(User.objects.all(), many=True).data)
+
+        #  Получение определённого пользователя по его ID
+        try:
+            return Response(UserSerializer(User.objects.get(id=self.kwargs["pk"])).data)
+
+        except:
+            return Response({"ERROR": f"Пользователя с ID: {self.kwargs['pk']} не существует"})
 
 
 class MarksAPIView(views.APIView):
